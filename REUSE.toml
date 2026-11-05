@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2024 aas-core-protobuf AUTHORS
+#
+# SPDX-License-Identifier: MIT
+
+version = 1
+
+# Prose and metadata where a header would end up in the rendered output
+# (e.g., README and CONTRIBUTING shown on GitHub).
+[[annotations]]
+path = ["AUTHORS", "README.md", "CONTRIBUTING.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 aas-core-protobuf AUTHORS"
+SPDX-License-Identifier = "MIT"
+
+# The snippets are inserted verbatim into the generated definitions by
+# aas-core-codegen (e.g., as the package name), so they must not carry
+# a header of their own.
+[[annotations]]
+path = "dev_scripts/snippets/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 aas-core-protobuf AUTHORS"
+SPDX-License-Identifier = "MIT"

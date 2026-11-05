@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2024 aas-core-protobuf AUTHORS
+#
+# SPDX-License-Identifier: MIT
+
+name: Reuse
+
+# NOTE (aaronzi, 2026-11-05):
+# Unlike the CI workflow, this one runs on every change so that files added
+# anywhere in the repository without a header are caught.
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+  Reuse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install reuse
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install reuse==6.3.0
+
+      - name: Check the REUSE compliance
+        run: reuse lint
