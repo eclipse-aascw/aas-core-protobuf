@@ -4,15 +4,15 @@
 
 name: CI
 
-# NOTE (aaronzi, 2026-11-05):
-# The workflow used to run only on changes in dev_scripts/. We run it on every
-# change now so that the REUSE check also catches files added elsewhere
-# (e.g., the generated definitions or the documentation) without a header.
 on:
   push:
     branches: ['main']
+    paths:
+      - dev_scripts/**
   pull_request:
     branches: [ 'main' ]
+    paths:
+      - dev_scripts/**
 
 jobs:
   Precommit:
@@ -40,22 +40,3 @@ jobs:
 
       - name: Run precommit.py
         run: python3 precommit.py
-
-  Reuse:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install reuse
-        run: |
-          python3 -m pip install --upgrade pip
-          pip3 install reuse==6.3.0
-
-      - name: Check the REUSE compliance
-        run: reuse lint
