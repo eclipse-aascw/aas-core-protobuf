@@ -20,3 +20,14 @@ path = "dev_scripts/snippets/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2024 aas-core-protobuf AUTHORS"
 SPDX-License-Identifier = "MIT"
+
+# The code generated from the meta-model transcribes the AAS
+# specification: the doc comments derived from its docstrings quote
+# the definitions of the classes, attributes and constraints. That text keeps
+# the license of the specification, next to the MIT license of our own code.
+# The specifications published by IDTA are licensed under CC BY 4.0.
+[[annotations]]
+path = "v3/types.proto"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Industrial Digital Twin Association e. V."
+SPDX-License-Identifier = "CC-BY-4.0"
